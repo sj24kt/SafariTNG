@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="RootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,8 +16,96 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d40-JW-MTH">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="qSd-qy-JCv">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <color key="color" red="1" green="0.67153243839999999" blue="0.068308022780000005" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eTh-em-Qpb">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6XM-oW-EiB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6XM-oW-EiB"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="6XM-oW-EiB"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="ddO-r8-iAp"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="qSd-qy-JCv" secondAttribute="centerY" id="3Wz-IZ-PNI"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="d40-JW-MTH" secondAttribute="bottom" id="8fW-bo-Lfq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d40-JW-MTH" secondAttribute="trailing" constant="-16" id="BTB-bP-C1e"/>
+                            <constraint firstItem="eTh-em-Qpb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="FnK-7w-zT9"/>
+                            <constraint firstItem="eTh-em-Qpb" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="M99-iO-1Tl"/>
+                            <constraint firstAttribute="centerX" secondItem="qSd-qy-JCv" secondAttribute="centerX" id="OkM-hg-DYa"/>
+                            <constraint firstItem="eTh-em-Qpb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="QUN-Kw-rf5"/>
+                            <constraint firstAttribute="centerX" secondItem="qSd-qy-JCv" secondAttribute="centerX" id="VRR-63-nRh"/>
+                            <constraint firstAttribute="centerY" secondItem="qSd-qy-JCv" secondAttribute="centerY" id="deg-yr-76Q"/>
+                            <constraint firstItem="d40-JW-MTH" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="hKZ-1v-Qkl"/>
+                            <constraint firstItem="d40-JW-MTH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="lMu-9W-1gj"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="d40-JW-MTH"/>
+                                <exclude reference="qSd-qy-JCv"/>
+                                <exclude reference="eTh-em-Qpb"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="BTB-bP-C1e"/>
+                                <exclude reference="hKZ-1v-Qkl"/>
+                                <exclude reference="lMu-9W-1gj"/>
+                                <exclude reference="FnK-7w-zT9"/>
+                                <exclude reference="M99-iO-1Tl"/>
+                                <exclude reference="QUN-Kw-rf5"/>
+                                <exclude reference="3Wz-IZ-PNI"/>
+                                <exclude reference="OkM-hg-DYa"/>
+                                <exclude reference="VRR-63-nRh"/>
+                                <exclude reference="deg-yr-76Q"/>
+                                <exclude reference="8fW-bo-Lfq"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="d40-JW-MTH"/>
+                                <include reference="qSd-qy-JCv"/>
+                                <include reference="eTh-em-Qpb"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="BTB-bP-C1e"/>
+                                <include reference="hKZ-1v-Qkl"/>
+                                <include reference="lMu-9W-1gj"/>
+                                <include reference="FnK-7w-zT9"/>
+                                <include reference="M99-iO-1Tl"/>
+                                <include reference="QUN-Kw-rf5"/>
+                                <include reference="3Wz-IZ-PNI"/>
+                                <include reference="OkM-hg-DYa"/>
+                                <include reference="VRR-63-nRh"/>
+                                <include reference="deg-yr-76Q"/>
+                                <include reference="8fW-bo-Lfq"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="spinner" destination="qSd-qy-JCv" id="QFR-NJ-ckT"/>
+                        <outlet property="webView" destination="d40-JW-MTH" id="khg-Jh-PfV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
